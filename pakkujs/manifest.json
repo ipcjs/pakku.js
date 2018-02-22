@@ -50,8 +50,12 @@
     "background": {
         "page": "core/background.html"
     },
+    "content_scripts":[
+        {"matches": ["*://*.bilibili.com/*"], "js": ["injected/do_static_inject.js"], "run_at": "document_end", "all_frames": true}
+    ],
     
     "web_accessible_resources": [
-        "core/content_script.js"
+        "core/content_script.js",
+        "injected/hook_array.js"
     ]
 }
