@@ -469,3 +469,16 @@ if(TEST_MODE) {
         return parse(dom,0,Status(0),[]);
     }
 }
+
+// click browser-action to reload pakku and current tab!
+if (false) {
+    if (localStorage.pakku_reload_doing) {
+        delete localStorage.pakku_reload_doing
+        chrome.tabs.reload()
+    }
+    chrome.browserAction.setPopup({ popup: '' })
+    chrome.browserAction.onClicked.addListener(function (tab) {
+        localStorage.pakku_reload_doing = 'y'
+        chrome.runtime.reload()
+    })
+}
